@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Hexastra Infotech</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-purple: #2E0F5C;
+            --brand-gold: #FFD700;
+            --brand-dark: #0a192f;
+            --brand-black: #111111;
+            --text-gray: #555555;
+            --light-bg: #f9f9f9;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            outline: none; 
+        }
+        
+        body { 
+            background: var(--light-bg); 
+            color: #333; 
+            font-family: 'Open Sans', sans-serif; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+       
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            background: #ffffff;
+            padding: 0 8%;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+            border-bottom: 3px solid var(--brand-purple);
+            box-shadow: 0 2px 20px rgba(46, 15, 92, 0.12);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 40px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Nav list */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links > li {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .nav-links > li > a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 18px;
+            height: 100%;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+            color: #2c2c2c;
+            transition: color 0.25s;
+            white-space: nowrap;
+        }
+        
+        .nav-links > li > a:hover,
+        .nav-links > li > a.active-link {
+            color: var(--brand-purple);
+        }
+        
+        .nav-links > li > a.active-link {
+            border-bottom: 3px solid var(--brand-purple);
+            margin-bottom: -3px;
+        }
+        
+        .nav-links > li > a i.fa-chevron-down {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            transition: transform 0.25s;
+        }
+        
+        .nav-links > li.dropdown:hover > a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* ========== DROPDOWNS ========== */
+        .dropdown-menu, .submenu-menu, .submenu-level3 {
+            position: absolute;
+            background: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            list-style: none;
+            animation: dropFade 0.22s ease;
+        }
+
+        .dropdown-menu {
+            top: 100%;
+            left: 0;
+            border-radius: 0 0 10px 10px;
+            border-top: 3px solid var(--brand-purple);
+            z-index: 1000;
+        }
+
+        .submenu-menu {
+            top: -6px;
+            left: 100%;
+            border-radius: 0 10px 10px 10px;
+            border-top: 3px solid var(--brand-gold);
+            z-index: 1001;
+        }
+
+        .submenu-level3 {
+            top: -6px;
+            left: 100%;
+            border-radius: 0 10px 10px 10px;
+            border-top: 3px solid var(--brand-black);
+            z-index: 1002;
+        }
+
+        .dropdown:hover > .dropdown-menu,
+        .submenu:hover > .submenu-menu,
+        .submenu-item:hover > .submenu-level3 { 
+            display: block; 
+        }
+
+        .dropdown-menu li, .submenu-menu li, .submenu-level3 li {
+            position: relative;
+        }
+
+        .dropdown-menu li a, .submenu-menu li a, .submenu-level3 li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 18px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .dropdown-menu > li > a:hover, .submenu-level3 > li > a:hover {
+            background: #f8f5fc;
+            color: var(--brand-purple);
+            padding-left: 22px;
+        }
+
+        .submenu-menu > li > a:hover {
+            background: #fffdf0;
+            color: #b39200;
+            padding-left: 22px;
+        }
+
+        .dropdown-menu i, .submenu-menu i {
+            font-size: 0.6rem;
+            opacity: 0.5;
+        }
+
+        @keyframes dropFade {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-menu > li + li, .submenu-menu > li + li {
+            border-top: 1px solid #f2f2f2;
+        }
+
+        /* ========== HERO HEADER ========== */
+        .page-header {
+            position: relative;
+            height: 70vh;
+            min-height: 450px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 68px;
+        }
+
+        .page-header .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            z-index: 1;
+            animation: fadeSlider 10s infinite;
+        }
+
+        .page-header .slide:nth-child(1) { animation-delay: 0s; }
+        .page-header .slide:nth-child(2) { animation-delay: 5s; }
+
+        .page-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+          
+            z-index: 2;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .service-title {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .service-subtitle {
+            color: #e2e8f0;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        @keyframes fadeSlider {
+            0%, 100% { opacity: 0; }
+            10%, 45% { opacity: 1; }
+            55%, 90% { opacity: 0; }
+        }
+
+        /* ========== CARDS & CONTENT ========== */
+        .summary-section { 
+            padding: 60px 8% 20px; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 30px; 
+        }
+        
+        .summary-card { 
+            text-align: center; 
+            padding: 35px 25px; 
+            background: #fff; 
+            border-radius: 15px; 
+            border-bottom: 4px solid var(--brand-gold); 
+            transition: all 0.3s ease; 
+            border: 1px solid #eee; 
+        }
+        
+        .summary-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(46, 15, 92, 0.1); 
+            border-bottom-color: var(--brand-purple); 
+        }
+        
+        .summary-card i { 
+            font-size: 36px; 
+            color: var(--brand-purple); 
+            margin-bottom: 20px; 
+        }
+        
+        .summary-card h3 { 
+            font-family: 'Montserrat', sans-serif; 
+            margin-bottom: 10px; 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            color: var(--brand-black); 
+        }
+        
+        .summary-card p { 
+            color: var(--text-gray); 
+            line-height: 1.6; 
+            font-size: 0.95rem; 
+        }
+
+        .contact-content { 
+            padding: 40px 8% 80px; 
+            display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; 
+            gap: 50px; 
+        }
+
+        /* Form Controls */
+        .form-container { 
+            background: #fff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            border: 1px solid #eee; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.03); 
+        }
+        
+        .form-title { 
+            margin-bottom: 30px; 
+            border-left: 5px solid var(--brand-purple); 
+            padding-left: 15px; 
+        }
+        
+        .form-title h2 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: var(--brand-black); 
+        }
+        
+        .form-title p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+        
+        .form-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+        }
+        
+        .form-group { 
+            margin-bottom: 20px; 
+        }
+        
+        .form-group label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            color: #555; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            font-family: 'Open Sans', sans-serif; 
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+            border-color: var(--brand-purple); 
+            box-shadow: 0 0 10px rgba(46, 15, 92, 0.1); 
+        }
+
+        /* Buttons */
+        .btn-submit { 
+            display: inline-block;
+            width: 100%; 
+            padding: 15px; 
+            background: var(--brand-purple); 
+            color: #fff; 
+            border: none; 
+            border-radius: 8px; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            font-size: 0.95rem;
+            cursor: pointer; 
+            transition: all 0.3s; 
+            letter-spacing: 1px; 
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-submit:hover { 
+            background: #1d073d; 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(46, 15, 92, 0.2);
+        }
+
+        .btn-gold {
+            background: var(--brand-gold);
+            color: var(--brand-black);
+        }
+
+        .btn-gold:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-whatsapp { 
+            width: 100%; 
+            padding: 15px; 
+            background: #25D366; 
+            color: #fff; 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 8px; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            transition: all 0.3s; 
+            text-transform: uppercase; 
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-whatsapp i { 
+            margin-right: 10px; 
+            font-size: 1.2rem; 
+        }
+        
+        .btn-whatsapp:hover { 
+            background: #1ebd59; 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Sidebar Info */
+        .sidebar-info h3 { 
+            margin-bottom: 25px; 
+            font-family: 'Montserrat', sans-serif; 
+            color: var(--brand-dark); 
+            font-weight: 700; 
+        }
+        
+        .hours-box { 
+            background: var(--brand-dark); 
+            color: #fff; 
+            padding: 30px; 
+            border-radius: 15px; 
+            margin-bottom: 30px; 
+            border-top: 4px solid var(--brand-gold); 
+        }
+        
+        .hours-box h3 { 
+            color: white; 
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hours-row { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid rgba(255,255,255,0.08); 
+            padding-bottom: 10px; 
+            font-size: 0.95rem; 
+            color: #e2e8f0;
+        }
+        
+        .hours-row.closed span:last-child { 
+            color: #ff4d4d; 
+            font-weight: 600;
+        }
+        
+        .amc-tag { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-left: 3px solid var(--brand-gold); 
+            padding: 15px; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            margin-top: 20px; 
+            color: #cbd5e1; 
+            line-height: 1.5;
+        }
+        
+        .amc-tag i { 
+            color: var(--brand-gold); 
+            margin-right: 5px;
+        }
+
+        .sidebar-links ul {
+            list-style: none;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover {
+            color: var(--brand-purple);
+            padding-left: 5px;
+        }
+
+        /* ========== MAP SECTION ========== */
+        .map-section { 
+            height: 450px; 
+            width: 100%; 
+            border-top: 5px solid var(--brand-gold); 
+            position: relative; 
+        }
+        
+        .map-overlay-btn { 
+            position: absolute; 
+            bottom: 30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: var(--brand-purple); 
+            color: #fff; 
+            padding: 12px 25px; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+            transition: 0.3s; 
+        }
+        
+        .map-overlay-btn:hover { 
+            background: var(--brand-gold); 
+            color: var(--brand-black);
+        }
+
+        /* ========== MODAL LAYOUT ========== */
+        .modal-overlay {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(10, 25, 47, 0.85); 
+            display: none; 
+            align-items: center; 
+            justify-content: center;
+            z-index: 2000; 
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: #fff; 
+            width: 90%; 
+            max-width: 500px;
+            padding: 35px; 
+            border-radius: 20px; 
+            position: relative;
+            border-top: 5px solid var(--brand-gold);
+            animation: modalSlide 0.4s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .modal-header { 
+            margin-bottom: 25px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .modal-header h2 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1.4rem; 
+            color: var(--brand-dark); 
+        }
+        
+        .modal-header h2 span { 
+            color: var(--brand-purple); 
+        }
+        
+        .close-modal { 
+            font-size: 1.8rem; 
+            cursor: pointer; 
+            color: #999; 
+            transition: 0.3s; 
+            line-height: 1;
+        }
+        
+        .close-modal:hover { 
+            color: var(--brand-purple); 
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* ========== FOOTER ========== */
+        footer { 
+            background: var(--brand-dark); 
+            padding: 80px 8% 30px; 
+            border-top: 4px solid var(--brand-gold); 
+            color: #fff; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 40px; 
+        }
+        
+        .f-col h4 { 
+            font-family: 'Montserrat', sans-serif; 
+            color: white; 
+            margin-bottom: 25px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            border-left: 3px solid var(--brand-gold); 
+            padding-left: 15px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .f-col p { 
+            color: #ccc; 
+            margin-bottom: 12px; 
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .f-col ul {
+            list-style: none;
+        }
+        
+        .f-col ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .f-col ul li i {
+            color: var(--brand-gold);
+            font-size: 0.75rem;
+            margin-right: 10px;
+        }
+        
+        .f-col ul a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .f-col ul a:hover {
+            color: var(--brand-gold);
+        }
+        
+        .f-col i.info-icon { 
+            color: var(--brand-gold); 
+            margin-right: 12px; 
+            width: 20px; 
+            text-align: center; 
+        }
+
+        .social-links { 
+            display: flex; 
+            gap: 12px; 
+            margin-top: 15px;
+        }
+        
+        .social-links a { 
+            width: 38px; 
+            height: 38px; 
+            background: rgba(255,255,255,0.06); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            color: #fff; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-links a:hover { 
+            background: var(--brand-purple); 
+            border-color: var(--brand-purple);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .copyright { 
+            text-align: center; 
+            margin-top: 60px; 
+            padding-top: 25px; 
+            border-top: 1px solid rgba(255,255,255,0.08); 
+            font-size: 13px; 
+            color: #777; 
+            letter-spacing: 1px; 
+        }
+
+        /* ========== RESPONSIVE TOOGLE ========== */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--brand-black);
+            padding: 6px;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            line-height: 1;
+        }
+
+        @media (max-width: 992px) {
+            .contact-content { grid-template-columns: 1fr; padding: 40px 5%; }
+            .summary-section { padding: 40px 5%; }
+            nav { padding: 0 5%; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                text-align: left;
+                border-bottom: 3px solid var(--brand-purple);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                padding: 10px 0;
+                height: auto;
+            }
+            .nav-links > li { height: auto; width: 100%; }
+            .nav-links > li > a {
+                padding: 15px 25px;
+                width: 100%;
+                height: auto;
+            }
+            .nav-links > li > a.active-link {
+                border-bottom: none;
+                color: var(--brand-purple);
+                background: #fdfbfa;
+            }
+            .nav-links.active { display: flex; }
+            
+            .dropdown-menu, .submenu-menu, .submenu-level3 {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                border-radius: 0;
+                padding-left: 20px;
+                display: none !important; 
+            }
+            
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo-container">
+            <img src="logo.jpeg" alt="Hexastra Infotech Logo">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="product.html">Products <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li class="submenu">
+                        <a href="#">Security Cameras <i class="fas fa-chevron-right"></i></a>
+                        <ul class="submenu-menu">
+                            <li class="submenu-item">
+                                <a href="#">Network Cameras <i class="fas fa-chevron-right"></i></a>
+                                <ul class="submenu-level3">
+                                    <li><a href="#">2MP</a></li>
+                                    <li><a href="#">4MP</a></li>
+                                    <li><a href="#">5MP</a></li>
+                                    <li><a href="#">8MP</a></li>
+                                    <li><a href="#">Project Models</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#">Network Video Recorders <i class="fas fa-chevron-right"></i></a>
+                                <ul class="submenu-level3">
+                                    <li><a href="#">4Ch</a></li>
+                                    <li><a href="#">8Ch</a></li>
+                                    <li><a href="#">16Ch</a></li>
+                                    <li><a href="#">32Ch</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#">Biometric Systems <i class="fas fa-chevron-right"></i></a>
+                        <ul class="submenu-menu">
+                            <li class="submenu-item">
+                                <a href="#">Fingerprint <i class="fas fa-chevron-right"></i></a>
+                                <ul class="submenu-level3">
+                                    <li><a href="#">N-Series</a></li>
+                                    <li><a href="#">V-Series</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Laptops & PCs</a></li>
+                    <li><a href="#">Telecom Systems</a></li>
+                    <li><a href="#">Network Gear</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="service.html">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">CCTV Surveillance</a></li>
+                    <li><a href="#">Computers & Laptops</a></li>
+                    <li><a href="#">Printers & Accessories</a></li>
+                    <li><a href="#">Access Control</a></li>
+                    <li><a href="#">Cyber Security</a></li>
+                </ul>
+            </li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="contactus.html" class="active-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <div class="slide" style="background-image:url('https://st4.depositphotos.com/3051589/25590/i/450/depositphotos_255904538-stock-photo-contact-us-customer-support-hotline.jpg');"></div>
+        <div class="slide" style="background-image:url('https://accessnsite.com/wp-content/uploads/2020/05/page-heading-background-contact-us.jpg');"></div>
+        
+        <div class="header-content" data-aos="zoom-out">
+            <h1 class="service-title">Get In Touch</h1>
+            <p class="service-subtitle">We’re here to help you secure and build your technical infrastructure.</p>
+            <div class="header-buttons">
+                <a href="#inquiry-form" class="btn-submit" style="width:auto;">Request a Callback</a>
+                <button type="button" id="openFeedback" class="btn-submit btn-gold" style="width:auto;">Give Feedback</button>
+            </div>
+        </div>
+    </header>
+
+   <div id="feedbackModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Customer <span>Feedback</span></h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <form id="feedback.php" action="https://formsubmit.co/connect@hexastra.in" method="POST">
+            <input type="hidden" name="_subject" value="New Website Feedback">
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="form-group">
+                <label>Rating</label>
+                <select name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ Good</option>
+                    <option value="3">⭐⭐⭐ Average</option>
+                    <option value="2">⭐⭐ Fair</option>
+                    <option value="1">⭐ Poor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Your Feedback</label>
+                <textarea name="feedback" rows="4" placeholder="Tell us about your experience..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Submit Feedback</button>
+        </form>
+    </div>
+</div>
+
+    <section class="summary-section" data-aos="fade-up">
+        <div class="summary-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Head Office</h3>
+            <p>Naigaon East, Vasai–Virar,<br>Mumbai, Maharashtra</p>
+        </div>
+        <div class="summary-card">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Phone</h3>
+            <p>+91 92244 67881</p>
+        </div>
+        <div class="summary-card">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>connect@hexastra.in</p>
+        </div>
+    </section>
+
+    <section class="contact-content">
+        <div class="form-container" id="inquiry-form" data-aos="fade-right">
+            <div class="form-title">
+                <h2>Send an Inquiry</h2>
+                <p>Fill out the form below and our team will get back to you shortly.</p>
+            </div>
+            <form id="inquiryForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" placeholder="Your Company (Optional)">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" placeholder="+91 00000 00000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="email@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Select Service</label>
+                    <select>
+                        <option>CCTV Surveillance</option>
+                        <option>Computers & Laptops</option>
+                        <option>Printers & Accessories</option>
+                        <option>Access Control</option>
+                        <option>Cyber Security</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="How can we assist you today?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+                <a href="https://wa.me/919224467881" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp Now
+                </a>
+            </form>
+        </div>
+
+        <div class="sidebar-info" data-aos="fade-left">
+            <div class="hours-box">
+                <h3><i class="fas fa-clock"></i> Working Hours</h3>
+                <div style="margin-top: 20px;">
+                    <div class="hours-row"><span>Monday - Saturday</span><span>10:00 AM - 7:30 PM</span></div>
+                    <div class="hours-row closed"><span>Sunday</span><span>CLOSED</span></div>
+                </div>
+                <div class="amc-tag">
+                    <i class="fas fa-headset"></i> <strong>24/7 Priority SLA Support</strong> is instantly available to our standard corporate AMC Clients over phone and email handles.
+                </div>
+            </div>
+
+            <div class="sidebar-links">
+                <h3>Quick Navigation</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right" style="font-size:0.75rem; color:var(--brand-purple); margin-right:8px;"></i> Return to Home</a></li>
+                    <li><a href="service.html"><i class="fas fa-chevron-right" style="font-size:0.75rem; color:var(--brand-purple); margin-right:8px;"></i> Explore Services</a></li>
+                    <li><a href="aboutus.html"><i class="fas fa-chevron-right" style="font-size:0.75rem; color:var(--brand-purple); margin-right:8px;"></i> About Our Core Values</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="map-section">
+        <iframe src="https://maps.google.com/maps?q=Naigaon%20East,%20Vasai&t=&z=13&ie=UTF-8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <a href="https://maps.google.com/maps?q=Naigaon%20East,%20Vasai" class="map-overlay-btn" target="_blank"><i class="fas fa-directions"></i> Open in Google Maps</a>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="f-col">
+                <h4>Hexastra Infotech</h4>
+                <p>Since 2016, we have been a highly trusted architect of high-performing turnkey enterprise IT architectures and security network ecosystems across industrial nodes.</p>
+                <div style="display: inline-block; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.15); color: var(--brand-gold); font-size: 12px; font-weight: 700; border-radius: 4px; font-family:'Montserrat';">
+                    ESTD. 2016
+                </div>
+            </div>
+
+            <div class="f-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i><a href="index.html">Home</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="aboutus.html">About Us</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="service.html">Services</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="contactus.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="f-col">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt info-icon"></i> Vasai, Mumbai, Maharashtra</p>
+                <p><i class="fas fa-envelope info-icon"></i> connect@hexastra.in</p>
+                <p><i class="fas fa-phone-alt info-icon"></i> +91 92244 67881</p>
+            </div>
+
+            <div class="f-col">
+                <h4>Follow Us</h4>
+                <p>Stay up to date with modern security architecture patches and system trends.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 <span style="color: var(--brand-gold); font-weight: 700;">Hexastra Infotech</span>. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Init Plugins
+        AOS.init({ duration: 1000, once: true });
+        emailjs.init("YOUR_PUBLIC_KEY"); // Swap out with valid public token key strings
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mobile Menu Controller Toggle Logic
+            const menu = document.getElementById("mobile-menu");
+            const nav = document.getElementById("nav-menu");
+
+            menu.addEventListener("click", function(){
+                nav.classList.toggle("active");
+            });
+
+            // Modal Management Window Handles
+            const feedbackModal = document.getElementById("feedbackModal");
+            const openBtn = document.getElementById("openFeedback");
+            const closeBtn = document.querySelector(".close-modal");
+            const feedbackForm = document.getElementById("feedbackForm");
+
+            openBtn.addEventListener("click", function () {
+                feedbackModal.style.display = "flex";
+            });
+
+            closeBtn.addEventListener("click", function () {
+                feedbackModal.style.display = "none";
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target === feedbackModal) {
+                    feedbackModal.style.display = "none";
+                }
+            });
+
+            // EmailJS Submissions Hook Injection Interface
+            feedbackForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                    rating: feedbackForm.rating.value,
+                    feedback: feedbackForm.feedback.value,
+                    email_to: "connect@hexastra.in"
+                })
+                .then(function() {
+                    alert("Thank you! Feedback sent successfully!");
+                    feedbackModal.style.display = "none";
+                    feedbackForm.reset();
+                })
+                .catch(function(error) {
+                    alert("Failed to deliver submission payload endpoints directly via automation channels.");
+                    console.error("EmailJS Error Log Context Output:", error);
+                });
+            });
+
+            // Simple Inquiry Mock Handle Event
+            document.getElementById("inquiryForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+                alert("Thank you! Your inquiry request has been recorded.");
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>

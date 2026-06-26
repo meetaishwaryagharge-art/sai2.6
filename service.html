@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Shree Sai Computers</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        
+         :root {
+            /* Updated Color Palette */
+            --brand-Deep-Purple : #2E0F5C	(46, 15, 92); /* Deep Sky Blue */
+            --brand-Vibrant-Yellow: #FFD700	(255, 215, 0);     /* Classic Gold */
+            --brand-dark: #111111;
+            --text-gray: #444;
+            --light-bg: #f9f9f9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--deep-black); 
+            font-family:'Open Sans', sans-serif; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: #ffffff;
+            padding: 0 8%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+            border-bottom: 3px solid  #2E0F5C;
+            box-shadow: 0 2px 20px rgba(0, 191, 255, 0.12);
+            transition: 0.4s;
+        }
+
+        /* Logo */
+       .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 2.5px;
+            color: var(--brand-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .logo-text span { color:  #2E0F5C; }
+        /* Nav list */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-links > li {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .nav-links > li > a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 18px;
+            height: 100%;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+            color: #2c2c2c;
+            transition: color 0.25s;
+            white-space: nowrap;
+        }
+        .nav-links > li > a:hover,
+        .nav-links > li > a.active-link {
+            color:  #2E0F5C;
+        }
+        .nav-links > li > a.active-link {
+            border-bottom: 3px solid  #2E0F5C;
+            margin-bottom: -3px;
+        }
+        .nav-links > li > a i.fa-chevron-down {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            transition: transform 0.25s;
+        }
+        .nav-links > li.dropdown:hover > a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* ========== DROPDOWN LEVEL 1 ========== */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 220px;
+            border-radius: 0 0 10px 10px;
+            border-top: 3px solid  #2E0F5C;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            z-index: 1000;
+            list-style: none;
+        }
+        .dropdown:hover > .dropdown-menu { display: block; }
+
+        .dropdown-menu > li { position: relative; }
+        .dropdown-menu > li > a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 18px;
+            font-size: 0.875rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+        }
+        .dropdown-menu > li > a:hover {
+            background: #f0faff;
+            color:  #2E0F5C;
+            padding-left: 22px;
+        }
+        .dropdown-menu > li > a i.fa-chevron-right { font-size: 0.6rem; opacity: 0.5; }
+        .dropdown-menu > li + li { border-top: 1px solid #f2f2f2; }
+
+        /* ========== SUBMENU LEVEL 2 ========== */
+        .submenu { position: relative; }
+        .submenu-menu {
+            position: absolute;
+            top: -6px;
+            left: 100%;
+            background: #ffffff;
+            min-width: 220px;
+            border-radius: 0 10px 10px 10px;
+            border-top: 3px solid  #FFD700;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            list-style: none;
+            z-index: 1001;
+        }
+        .submenu:hover > .submenu-menu { display: block; }
+
+        .submenu-menu > li { position: relative; }
+        .submenu-menu > li > a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            font-size: 0.875rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+        }
+        .submenu-menu > li > a:hover {
+            background: #fffbf0;
+            color: var(--brand-gold);
+            padding-left: 22px;
+        }
+        .submenu-menu > li > a i.fa-chevron-right { font-size: 0.6rem; opacity: 0.5; }
+        .submenu-menu > li + li { border-top: 1px solid #f9f9f9; }
+
+        /* ========== SUBMENU LEVEL 3 ========== */
+        .submenu-item { position: relative; }
+        .submenu-level3 {
+            position: absolute;
+            top: -6px;
+            left: 100%;
+            background: #ffffff;
+            min-width: 180px;
+            border-radius: 0 10px 10px 10px;
+            border-top: 3px solid var(--brand-dark);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            list-style: none;
+            z-index: 1002;
+        }
+        .submenu-item:hover > .submenu-level3 { display: block; }
+
+        .submenu-level3 > li > a {
+            display: block;
+            padding: 9px 18px;
+            font-size: 0.85rem;
+            font-family: 'Open Sans', sans-serif;
+            color: #444;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+        }
+        .submenu-level3 > li > a:hover {
+            background: #f0faff;
+            color: #2E0F5C;
+            padding-left: 24px;
+        }
+
+        /* Dropdown fade animation */
+        .dropdown-menu, .submenu-menu, .submenu-level3 {
+            animation: dropFade 0.22s ease;
+        }
+        @keyframes dropFade {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile toggle button */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--brand-dark);
+            padding: 6px;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav { padding: 0 5%; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                text-align: left;
+                border-bottom: 3px solid #2E0F5C;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                padding: 10px 0;
+            }
+            .nav-links > li { height: auto; padding: 2px 0; }
+            .nav-links > li > a { padding: 12px 25px; height: auto; border-bottom: none; }
+            .nav-links.active { display: flex; }
+            .dropdown-menu, .submenu-menu, .submenu-level3 {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                border-radius: 0;
+                padding-left: 18px;
+                display: none;
+                animation: none;
+            }
+            .dropdown:hover > .dropdown-menu,
+            .submenu:hover > .submenu-menu,
+            .submenu-item:hover > .submenu-level3 { display: none; }
+           
+        }
+
+        /* --- PAGE HEADER --- */
+         /* Header */
+       .page-header {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 68px;
+}
+
+.page-header .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fadeSlider 10s infinite;
+}
+
+.page-header .slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.page-header .slide:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.page-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+   
+    z-index: 1;
+}
+
+.page-header h1 {
+    position: relative;
+    z-index: 2;
+    color:white;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+.page-header h1 p{
+    color: white;
+}
+@keyframes fadeSlider {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 1;
+    }
+    55% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+        .service-title{
+    color:#fff;
+    font-size:60px;
+    font-weight:700;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+.service-subtitle{
+    color:#fff;
+    font-size:20px;
+    font-weight:400;
+    margin-bottom:25px;
+}
+
+        /* --- SERVICE SECTIONS --- */
+        .section-padding { padding: 80px 0; }
+        .line { width: 70px; height: 4px; background:  #FFD700; margin-bottom: 25px; }
+        .service-card { border: none; transition: 0.4s; margin-bottom: 30px; height: 100%; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-bottom: 4px solid  #FFD700; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 191, 255, 0.15); border-bottom-color:  #2E0F5C; }
+        .service-card img { height: 250px; object-fit: cover; }
+        
+        .btn-brand { 
+            background: transparent; border: 2px solid  #2E0F5C; color: #2E0F5C;
+            padding: 10px 25px; font-weight: bold; text-transform: uppercase; transition: 0.3s;
+            display: inline-block; text-decoration: none; border-radius: 5px; margin-top: 15px;
+        }
+        .btn-brand:hover { background:  #FFD700; border-color: #FFD700; color: white; }
+
+        /* --- INDUSTRY GRID ---
+        .industry-box { text-align: center; padding: 30px; background: #fff; border: 1px solid #eee; border-radius: 10px; transition: 0.3s; }
+        .industry-box i { font-size: 2.5rem; color: var(--brand-sky-blue); margin-bottom: 15px; }
+        .industry-box:hover { background: var(--brand-sky-blue); color: white; transform: scale(1.05); }
+        .industry-box:hover i { color: white; } */
+
+      
+        /* --- FOOTER --- */
+        footer { background: var(--brand-dark); padding: 80px 8% 30px; color: #fff; border-top: 4px solid  #FFD700; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .f-col h4 { font-family:'Open Sans', sans-serif; color:  #2E0F5C; margin-bottom: 25px; font-weight: 700; text-transform: uppercase; }
+        .f-col p, .f-col li { color: #aaa; margin-bottom: 12px; font-size: 15px; list-style: none; }
+        .f-col i { color:  #FFD700; margin-right: 12px; width: 20px; text-align: center; }
+
+.logo-text img {
+    max-height: 45px;
+    object-fit: contain;
+}
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+         <img src="logo.jpeg" alt="Hexastra Infotech Logo" style="height: 40px; width: auto;">
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    
+    
+     <li class="dropdown">
+    <a href="product.html" >
+        Product <i class="fas fa-chevron-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+
+        <!-- Security Cameras -->
+        <li class="submenu">
+            <a href="#">Security Cameras <i class="fas fa-chevron-right"></i></a>
+
+            <ul class="submenu-menu">
+
+                <li class="submenu-item">
+                    <a href="#">Network Cameras <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">2MP</a></li>
+                        <li><a href="#">4MP</a></li>
+                        <li><a href="#">5MP</a></li>
+                        <li><a href="#">8MP</a></li>
+                        <li><a href="#">Project Models</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Network Video Recorder <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">4Ch</a></li>
+                        <li><a href="#">8Ch</a></li>
+                        <li><a href="#">16Ch</a></li>
+                        <li><a href="#">32Ch</a></li>
+                        <li><a href="#">64Ch</a></li>
+                        <li><a href="#">128Ch</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Analog HD Camera <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">2.4MP</a></li>
+                        <li><a href="#">5MP</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Digital Video Recorder <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">4Ch</a></li>
+                        <li><a href="#">8Ch</a></li>
+                        <li><a href="#">16Ch</a></li>
+                        <li><a href="#">32Ch</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <!-- Biometric System -->
+        <li class="submenu">
+            <a href="#">Biometric System <i class="fas fa-chevron-right"></i></a>
+
+            <ul class="submenu-menu">
+
+                <li class="submenu-item">
+                    <a href="#">Fingerprint <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">N-Series</a></li>
+                        <li><a href="#">V-Series</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Face <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">N-Series</a></li>
+                        <li><a href="#">AI-Series</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Card <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">Attendance & Access Control</a></li>
+                        <li><a href="#">Access Control</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Controller <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">C22</a></li>
+                        <li><a href="#">C32</a></li>
+                        <li><a href="#">C332</a></li>
+                        <li><a href="#">C334</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Thermometer <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">BM-IRT</a></li>
+                        <li><a href="#">BM-TDA</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <li><a href="#">Laptops & PCs</a></li>
+        <li><a href="#">Telecom System</a></li>
+        <li><a href="#">Network Gear</a></li>
+        <li><a href="#">Business Software</a></li>
+        <li><a href="#">IT Accessories</a></li>
+
+    </ul>
+</li>
+
+    <li class="dropdown">
+        <a href="service.html" class="active-link" >Services <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">CCTV Surveillance</a></li>
+            <li><a href="#">Computers & Laptops</a></li>
+            <li><a href="#">Printers & Accessories</a></li>
+            <li><a href="#">Access Control</a></li>
+            <li><a href="#">Cyber Security</a></li>
+        </ul>
+    </li>
+<li><a href="aboutus.html">About</a></li>
+    <li><a href="contactus.html">Contact</a></li>
+</ul>
+    </nav>
+    <header class="page-header">
+         <div class="slide"
+        style="background-image:url('https://static.vecteezy.com/system/resources/thumbnails/048/570/582/small/rear-view-of-security-system-operator-looking-at-cctv-footage-at-desk-in-office-photo.jpg');">
+    </div>
+
+    <div class="slide"
+        style="background-image:url('https://c8.alamy.com/comp/3B0EKRF/cctv-security-system-man-monitoring-at-office-from-smart-phone-camera-footage-on-screen-3B0EKRF.jpg');">
+    </div>
+       <div class="container text-center" data-aos="zoom-out">
+    <h1 class="service-title">OUR SERVICES</h1>
+    <p class="service-subtitle">
+        End-to-End IT Solutions Tailored for Your Business Needs
+    </p>
+   
+</div>
+   </header>
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 offset-lg-2 text-center" data-aos="fade-up">
+                    <h2 class="mb-4"><span>Complete Tech Solutions</span></h2>
+                    <p class="text-muted lead">At Shree Sai Computers, we specialize in providing complete IT infrastructure, security systems, and technology services designed to enhance business efficiency, reliability, and safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+       <div class="row gx-4 gy-4">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="card service-card">
+                    <img src="https://5.imimg.com/data5/HJ/AV/MY-46252544/cctv-camera.jpg" class="card-img-top" alt="CCTV">
+                    <div class="card-body">
+                        <h5 class="fw-bold">CCTV Surveillance</h5>
+                        <ul class="small text-muted ps-0 list-unstyled">
+                            <li><i class="fas fa-check text-warning"></i> Installation & Maintenance</li>
+                            <li><i class="fas fa-check text-warning"></i> Residential & Commercial</li>
+                            <li><i class="fas fa-check text-warning"></i> Hikvision, CP Plus</li>
+                        </ul>
+                        <a href="contactus.html" class="btn-brand">Book Site Visit</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=600" class="card-img-top" alt="Computing">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Computers & Laptops</h5>
+                        <ul class="small text-muted ps-0 list-unstyled">
+                            <li><i class="fas fa-check text-warning"></i> Branded Sales (HP, Dell)</li>
+                            <li><i class="fas fa-check text-warning"></i> Upgrades & Assembling</li>
+                            <li><i class="fas fa-check text-warning"></i> AMC Support Available</li>
+                        </ul>
+                        <a href="contactus.html" class="btn-brand">Get Quote</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=600" class="card-img-top" alt="Printers">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Printers & Accessories</h5>
+                        <ul class="small text-muted ps-0 list-unstyled">
+                            <li><i class="fas fa-check text-warning"></i> Branded Sales & Consumables</li>
+                            <li><i class="fas fa-check text-warning"></i> Refilling & Servicing</li>
+                            <li><i class="fas fa-check text-warning"></i> Business Setup Support</li>
+                        </ul>
+                        <a href="contactus.html" class="btn-brand">Request Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600" class="card-img-top" alt="Access">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Access Control</h5>
+                        <ul class="small text-muted ps-0 list-unstyled">
+                            <li><i class="fas fa-check text-warning"></i> Biometric Attendance</li>
+                            <li><i class="fas fa-check text-warning"></i> HR Software Integration</li>
+                            <li><i class="fas fa-check text-warning"></i> Door Access Solutions</li>
+                        </ul>
+                        <a href="contactus.html" class="btn-brand">Ask for Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="card service-card h-100">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600" class="card-img-top" alt="Networking">
+                <div class="card-body">
+                    <h5 class="fw-bold">Cyber Security</h5>
+                    <ul class="small text-muted ps-0 list-unstyled">
+                        <li><i class="fas fa-check text-warning"></i> LAN/WAN Setup</li>
+                        <li><i class="fas fa-check text-warning"></i> Wi-Fi Zone Creation</li>
+                        <li><i class="fas fa-check text-warning"></i> Server Rack Management</li>
+                    </ul>
+                    <a href="contactus.html" class="btn-brand">Consult Expert</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="section-padding bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Our Expert Services</h2>
+            <p class="text-muted">Comprehensive IT, Security, Safety & Automation Solutions Under One Roof</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Security & Surveillance -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-video text-warning me-2"></i>
+                            Security & Surveillance
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>📹 CCTV Surveillance Systems</li>
+                            <li>👆 Biometric Attendance Systems</li>
+                            <li>🚧 Boom Barriers & Access Control Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyber Security -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-shield-alt text-warning me-2"></i>
+                            Cyber Security Solutions
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>🖥️ Firewall & Network Security</li>
+                            <li>🛡️ Endpoint & Antivirus Protection</li>
+                            <li>☁️ Cloud & Email Security</li>
+                            <li>🔍 Vulnerability Assessment & Data Protection</li>
+                            <li>👨‍💻 Cyber Security Consulting & Monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fire & Safety -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-fire-extinguisher text-warning me-2"></i>
+                            Fire Fighting, Safety & Alarms
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>🔥 Fire Fighting & Suppression Systems</li>
+                            <li>🚒 Hydrant Systems</li>
+                            <li>🚨 Addressable Fire Alarm Systems</li>
+                            <li>💧 Sprinkler Systems</li>
+                            <li>📢 Public Address (PA) Sound Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-microchip text-warning me-2"></i>
+                            Industrial & Smart Automation
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>⚙️ Industrial Automation Solutions</li>
+                            <li>⚡ Electrical & Instrumentation Services</li>
+                            <li>🏠 Smart Home Automation</li>
+                            <li>🏢 Smart Office Automation</li>
+                            <li>📱 Digital Control & Monitoring Systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Computers -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-laptop text-warning me-2"></i>
+                            Computers & Laptop Solutions
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>🖥️ Branded & Assembled Computers</li>
+                            <li>⚡ High Configuration Workstations</li>
+                            <li>💼 Business, Gaming & Professional Laptops</li>
+                            <li>🛠️ Sales, Service & Support</li>
+                            <li>🔧 Upgradation & Accessories</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Networking -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-network-wired text-warning me-2"></i>
+                            Connectivity & Networking
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>🌐 Internet Lease Lines</li>
+                            <li>📡 Broadband Solutions</li>
+                            <li>🔗 LAN & Wi-Fi Networking</li>
+                            <li>📶 Point-to-Point (P2P) Connectivity</li>
+                            <li>🌍 MPLS Wired & Wireless Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-building text-warning me-2"></i>
+                            Enterprise IT Solutions
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>☁️ Business Email Solutions</li>
+                            <li>💼 Cloud Infrastructure Services</li>
+                            <li>📊 CRM & ERP Solutions</li>
+                            <li>💳 Razorpay Payment Gateway Integration</li>
+                            <li>⚡ Free Integration Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repairs -->
+            <div class="col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">
+                            <i class="fas fa-tools text-warning me-2"></i>
+                            Repairs & Maintenance
+                        </h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>💻 Chip-Level Laptop & Desktop Repair</li>
+                            <li>🖨️ Printer Repair & Maintenance</li>
+                            <li>💾 Hard Disk Data Recovery</li>
+                            <li>🛠️ AMC Contracts</li>
+                            <li>📋 Facility Management Services (FMS)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <!--  <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="mb-5">Industry Solutions</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="industry-box">
+                        <i class="fas fa-industry"></i>
+                        <h6>Factories</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="industry-box">
+                        <i class="fas fa-school"></i>
+                        <h6>Education</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="industry-box">
+                        <i class="fas fa-hospital"></i>
+                        <h6>Hospitals</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="industry-box">
+                        <i class="fas fa-hotel"></i>
+                        <h6>Hotels</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="industry-box">
+                        <i class="fas fa-home"></i>
+                        <h6>Residential</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="industry-box">
+                        <i class="fas fa-building"></i>
+                        <h6>Corporate</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
+   
+
+    <footer style="background: #0a192f; color: #ffffff; padding: 80px 8% 30px; border-top: 4px solid  #FFD700;">
+        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px;">
+            
+            <div class="f-col">
+                <h4 style="color:white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid #FFD700; padding-left: 15px;">Hexastra Infotech</h4>
+                <p style="color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+                    Since 2016, we have been a trusted provider of turnkey IT and security infrastructure. We specialize in high-quality solutions for SMEs and corporate sectors across India.
+                </p>
+                <div class="amc-badge" style="display: inline-block; padding: 5px 12px; border: 1px solid #2E0F5C; color: white; font-size: 12px; font-weight: 700; border-radius: 4px;">
+                    ESTD. 2016
+                </div>
+            </div>
+
+            <div class="f-col">
+                <h4 style="color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid  #FFD700; padding-left: 15px;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="index.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">Home</a></li>
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="aboutus.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">About Us</a></li>
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="service.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">Services</a></li>
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="contactus.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="f-col">
+                <h4 style="color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid  #FFD700; padding-left: 15px;">Contact Info</h4>
+                <p style="color: #ccc; margin-bottom: 15px; display: flex; align-items: flex-start; font-size: 14px;"><i class="fas fa-map-marker-alt" style="color:  #FFD700; margin-right: 15px; margin-top: 5px;"></i> Vasai, Mumbai, Maharashtra</p>
+                <p style="color: #ccc; margin-bottom: 15px; display: flex; align-items: center; font-size: 14px;"><i class="fas fa-envelope" style="color:  #FFD700; margin-right: 15px;"></i> connect@hexastra.in</p>
+                <p style="color: #ccc; margin-bottom: 15px; display: flex; align-items: center; font-size: 14px;"><i class="fas fa-phone-alt" style="color:  #FFD700; margin-right: 15px;"></i> +91 92244 67881</p>
+            </div>
+
+            <div class="f-col">
+                <h4 style="color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid  #FFD700; padding-left: 15px;">Follow Us</h4>
+                <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">Connect with us for the latest IT updates and security solutions.</p>
+                <div class="social-links" style="display: flex; gap: 15px;">
+                    <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color:white; text-decoration: none; transition: 0.3s; border: 1px solid #2E0F5C;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; text-decoration: none; transition: 0.3s; border: 1px solid  #2E0F5C;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; text-decoration: none; transition: 0.3s; border: 1px solid #2E0F5C;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright" style="text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: #777; letter-spacing: 1px;">
+            © 2026 <span style="color: #FFD700; font-weight: 700;">Hexastra Infotech</span>. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        window.onscroll = function() {
+            var nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+            } else {
+                nav.style.boxShadow = "none";
+            }
+        };
+    </script>
+
+     <script>
+
+const menu = document.getElementById("mobile-menu");
+const nav = document.getElementById("nav-menu");
+
+menu.addEventListener("click", function(){
+nav.classList.toggle("active");
+});
+
+</script>
+</body>
+</html>
